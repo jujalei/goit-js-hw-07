@@ -6,7 +6,6 @@ const gallery = document.querySelector(".gallery");
 
 const galleryItem = createGalleryItems(galleryItems);
 
-// gallery.insertAdjacentHTML('afterbegin', galleryItem);
 gallery.innerHTML = galleryItem;
 
 function createGalleryItems(galleryItems) {
