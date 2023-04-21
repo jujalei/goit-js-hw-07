@@ -7,13 +7,14 @@ const galleryItem = createGalleryItems(galleryItems);
 gallery.insertAdjacentHTML('afterbegin', galleryItem);
 
 function createGalleryItems(galleryItems) {
- return galleryItems.map(({ preview, original, description }) => {
-    return `<li class="gallery__item">
+ return galleryItems.reduce((acc, { preview, original, description }) => {
+   const item =  `<li class="gallery__item">
     <a class="gallery__link" href="${original}">
        <img class="gallery__image" src="${preview}" alt="${description}" />
     </a>
  </li>`;
-  }).join('');
+ return acc+item
+  }, '');
 }
 
 const lightbox = new SimpleLightbox('.gallery a',  {
