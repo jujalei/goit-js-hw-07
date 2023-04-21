@@ -1,14 +1,12 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-// console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
 const galleryItem = createGalleryItems(galleryItems);
 
 // gallery.insertAdjacentHTML('afterbegin', galleryItem);
-
 gallery.innerHTML = galleryItem;
 
 function createGalleryItems(galleryItems) {
@@ -28,11 +26,8 @@ function createGalleryItems(galleryItems) {
     .join("");
 }
 
-// console.log(galleryItem)
 
 gallery.addEventListener("click", onClick);
-
-const instances = [];
 
 function onClick(evt) {
   evt.preventDefault();
@@ -42,6 +37,13 @@ function onClick(evt) {
   const instance = basicLightbox.create(`
     <img src="${original}" width="800" height="600">
 `);
-  instances.push(instance);
+
   instance.show();
+
+  // onEscClick
+  document.addEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+      instance.close();
+    }
+  });
 }
